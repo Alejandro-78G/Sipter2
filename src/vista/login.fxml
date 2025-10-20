@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Controlador.controLadorDelogin"
+            prefWidth="400" prefHeight="300">
+
+    <children>
+        <Label text="Iniciar Sesión" layoutX="150" layoutY="40"/>
+
+
+        <TextField fx:id="txtUsuario" promptText="Usuario"
+                   layoutX="120" layoutY="90"/>
+
+        <PasswordField fx:id="txtContrasena" promptText="Contraseña"
+                       layoutX="120" layoutY="130"/>
+
+        <Button text="Entrar" layoutX="170" layoutY="180"
+                onAction="#handleLogin"/>
+
+        <Label fx:id="lblMensaje" layoutX="120" layoutY="230" text="" />
+
+
+    </children>
+
+</AnchorPane>
