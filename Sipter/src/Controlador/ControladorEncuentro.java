@@ -1,7 +1,6 @@
 package Controlador;
 
-
-import Modelo.ConexionViajes;
+import Modelo.ConexionSql;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,7 +8,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -35,7 +33,7 @@ public class ControladorEncuentro {
 
     private void cargarEncuentros() {
         String sql = "SELECT lugar, hora FROM encuentros";
-        try (Connection conn = ConexionViajes.getConexion();
+        try (Connection conn = ConexionSql.getConexion();
              PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
@@ -50,7 +48,7 @@ public class ControladorEncuentro {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("❌ Error al cargar los lugares de encuentro.");
+            System.out.println("Error al cargar los lugares de encuentro.");
         }
     }
 

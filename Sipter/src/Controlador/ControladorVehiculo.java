@@ -1,6 +1,6 @@
 package Controlador;
 
-import Modelo.ConexionViajes;
+import Modelo.ConexionSql;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -39,7 +39,7 @@ public class ControladorVehiculo {
         ObservableList<Vehiculo> lista = FXCollections.observableArrayList();
         String sql = "SELECT * FROM vehiculos";
 
-        try (Connection conn = ConexionViajes.getConexion();
+        try (Connection conn = ConexionSql.getConexion();
              PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
@@ -59,7 +59,7 @@ public class ControladorVehiculo {
         }
     }
 
-    // Clase interna (modelo para la tabla)
+
     public static class Vehiculo {
         private final int id;
         private final String placa;

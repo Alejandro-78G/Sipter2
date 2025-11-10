@@ -1,6 +1,6 @@
 package Controlador;
 
-import Modelo.ConexionViajes;
+import Modelo.ConexionSql;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.time.LocalDateTime;
@@ -28,13 +27,22 @@ public class ControladorMenuConductor {
 
     @FXML
     private void reportarInasistencia() {
-        mostrarMensaje("Reporte enviado", "Inasistencia de pasajeros reportada correctamente.");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/reportar_inasistencia.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Reportar Inasistencia");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            mostrarError("Error al abrir la ventana de inasistencia: " + e.getMessage());
+        }
     }
 
     @FXML
     private void verPasajeros() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/pasajeros.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/ver_pasajeros.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setTitle("Lista de Pasajeros");
@@ -50,7 +58,6 @@ public class ControladorMenuConductor {
         try {
             Stage stageActual = (Stage) getWindow();
             stageActual.close();
-
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/login.fxml"));
             Parent root = loader.load();
             Stage stageLogin = new Stage();
@@ -63,18 +70,16 @@ public class ControladorMenuConductor {
     }
 
     private void registrarEvento(String tipo) {
-        try (Connection conn = ConexionViajes.getConexion()) {
+        try (Connection conn = ConexionSql.getConexion()) {
             if (conn == null) {
-                mostrarError("No se pudo conectar a la base de datos de viajes.");
+                mostrarError("No se pudo conectar a la base de datos.");
                 return;
             }
-
             String sql = "INSERT INTO registro_viajes (tipo_evento, fecha_hora) VALUES (?, ?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, tipo);
             ps.setString(2, LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
             ps.executeUpdate();
-
             mostrarMensaje("Éxito", "Evento de " + tipo + " confirmado correctamente.");
         } catch (Exception e) {
             mostrarError("Error al registrar " + tipo + ": " + e.getMessage());
@@ -101,3 +106,4 @@ public class ControladorMenuConductor {
         return javafx.stage.Window.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
     }
 }
+

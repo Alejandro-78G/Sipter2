@@ -18,7 +18,7 @@ public class ConexionSql {
             Class.forName(DRIVER);
             if (connection == null || connection.isClosed()) {
                 connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                System.out.println("Conectado a la base de datos");
+                System.out.println("Conectado a transporte_app");
             }
         } catch (ClassNotFoundException e) {
             System.out.println("No se encontró el driver JDBC de MySQL.");
@@ -41,3 +41,4 @@ public class ConexionSql {
         }
     }
 }
+

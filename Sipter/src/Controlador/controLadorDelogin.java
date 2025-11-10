@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -109,7 +108,6 @@ public class controLadorDelogin {
             stage.initOwner(txtUsuario.getScene().getWindow());
             stage.showAndWait();
 
-            // Después del registro, vuelve a mostrar la ventana de login
             FXMLLoader loaderLogin = new FXMLLoader(getClass().getResource("/vista/login.fxml"));
             Parent rootLogin = loaderLogin.load();
             Stage stageLogin = new Stage();

@@ -2,21 +2,59 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="Controlador.ControladorMenuAdmin"
-            prefWidth="600" prefHeight="500">
+            prefWidth="600" prefHeight="400">
 
-    <Label text="Menú Administrador" layoutX="220" layoutY="20" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+    <children>
+        <Label text="Menú Administrador" layoutX="200" layoutY="30">
+            <font>
+                <Font name="System Bold" size="20" />
+            </font>
+        </Label>
 
-    <Button text="Generar Reporte Viajes" layoutX="50" layoutY="70" prefWidth="200" onAction="#generarReporteViajes"/>
-    <Button text="Generar Reporte Conductores" layoutX="300" layoutY="70" prefWidth="200" onAction="#generarReporteConductores"/>
-    <Button text="Inhabilitar Usuarios" layoutX="50" layoutY="120" prefWidth="200" onAction="#inhabilitarUsuarios"/>
-    <Button text="Inhabilitar Conductores" layoutX="300" layoutY="120" prefWidth="200" onAction="#inhabilitarConductores"/>
-    <Button text="Actualizar Tarifas" layoutX="50" layoutY="170" prefWidth="200" onAction="#actualizarTarifas"/>
-    <Button text="Eliminar Rutas" layoutX="300" layoutY="170" prefWidth="200" onAction="#eliminarRutas"/>
-    <Button text="Gestionar Rutas" layoutX="50" layoutY="220" prefWidth="200" onAction="#gestionarRutas"/>
-    <Button text="Gestión Vehículos" layoutX="300" layoutY="220" prefWidth="200" onAction="#abrirVehiculo"/>
-    <Button text="Cerrar Sesión" layoutX="50" layoutY="270" prefWidth="200" onAction="#cerrarSesion"/>
 
+        <Button text="Generar Reporte Viajes"
+                layoutX="80" layoutY="100" prefWidth="180"
+                onAction="#generarReporteViajes"/>
+
+        <Button text="Generar Reporte Conductores"
+                layoutX="330" layoutY="100" prefWidth="180"
+                onAction="#generarReporteConductores"/>
+
+
+        <Button text="Inhabilitar Usuarios"
+                layoutX="80" layoutY="150" prefWidth="180"
+                onAction="#inhabilitarUsuarios"/>
+
+        <Button text="Inhabilitar Conductores"
+                layoutX="330" layoutY="150" prefWidth="180"
+                onAction="#inhabilitarConductores"/>
+
+
+        <Button text="Actualizar Tarifas"
+                layoutX="80" layoutY="200" prefWidth="180"
+                onAction="#actualizarTarifas"/>
+
+        <Button text="Eliminar Rutas"
+                layoutX="330" layoutY="200" prefWidth="180"
+                onAction="#eliminarRutas"/>
+
+
+        <Button text="Gestionar Rutas"
+                layoutX="80" layoutY="250" prefWidth="180"
+                onAction="#gestionarRutas"/>
+
+        <Button text="Gestión Vehículos"
+                layoutX="330" layoutY="250" prefWidth="180"
+                onAction="#gestionarVehiculos"/>
+
+
+        <Button text="Cerrar Sesión"
+                layoutX="210" layoutY="320" prefWidth="180"
+                onAction="#cerrarSesion"/>
+    </children>
 </AnchorPane>
+

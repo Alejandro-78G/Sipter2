@@ -42,9 +42,9 @@ public class ControladorEliminarRutas {
                 SELECT r.id_ruta, r.origen, r.destino, r.tarifa,
                        c.nombre AS conductor, v.modelo AS vehiculo
                 FROM rutas r
-                LEFT JOIN viajes_conductores vc ON r.id_ruta = vc.id
-                LEFT JOIN conductores c ON vc.id_conductor = c.id
-                LEFT JOIN vehiculos v ON vc.id_conductor = v.id
+                LEFT JOIN viajes_conductores vc ON r.id_ruta = vc.id_ruta
+                LEFT JOIN conductores c ON vc.id_conductor = c.id_conductor
+                LEFT JOIN vehiculos v ON c.id_vehiculo = v.id_vehiculo
                 """;
 
         try (Connection conn = ConexionSql.getConexion();
@@ -126,3 +126,4 @@ public class ControladorEliminarRutas {
         public String getVehiculo() { return vehiculo; }
     }
 }
+

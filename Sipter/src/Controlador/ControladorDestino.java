@@ -1,6 +1,6 @@
 package Controlador;
 
-import Modelo.ConexionViajes;
+import Modelo.ConexionSql;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -37,7 +37,7 @@ public class ControladorDestino {
 
     private void cargarDestinos() {
         String sql = "SELECT ciudad, direccion, distancia FROM destinos";
-        try (Connection conn = ConexionViajes.getConexion();
+        try (Connection conn = ConexionSql.getConexion();
              PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
@@ -53,7 +53,7 @@ public class ControladorDestino {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("❌ Error al cargar los destinos desde la base de datos.");
+            System.out.println("Error al cargar los destinos desde la base de datos.");
         }
     }
 
@@ -63,7 +63,6 @@ public class ControladorDestino {
         stage.close();
     }
 
-    // Clase interna modelo
     public static class Destino {
         private String ciudad;
         private String direccion;

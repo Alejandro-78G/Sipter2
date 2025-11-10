@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Controlador.ControladorMenuAdmin"
+            fx:controller="Controlador.ControladorMenu"
             prefWidth="400" prefHeight="300">
     <Button text="Elegir Vehículo" layoutX="130" layoutY="40" prefWidth="150" onAction="#abrirVehiculo"/>
     <Button text="Elegir Conductor" layoutX="130" layoutY="90" prefWidth="150" onAction="#abrirConductor"/>

@@ -1,8 +1,6 @@
 package SIpter;
 
-import Modelo.ConexionMySql;
 import Modelo.ConexionSql;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,12 +9,11 @@ import java.sql.SQLException;
 public class UsuarioDAO {
 
     public static boolean registrarUsuario(Usuario usuario) {
-        Connection conn = ConexionMySql.getConexion();
+        Connection conn = ConexionSql.getConexion();
         PreparedStatement ps = null;
         ResultSet rs = null;
 
         try {
-
             String verificar = "SELECT * FROM usuarios WHERE documento = ? OR nombre_usuario = ?";
             ps = conn.prepareStatement(verificar);
             ps.setLong(1, usuario.getCedula());
@@ -27,7 +24,6 @@ public class UsuarioDAO {
                 System.out.println("El usuario ya está registrado en la base de datos.");
                 return false;
             }
-
 
             String sql = "INSERT INTO usuarios (nombre, apellido, documento, tipo_documento, contrasena, nombre_usuario, ciudad, rol) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             ps = conn.prepareStatement(sql);
@@ -58,6 +54,7 @@ public class UsuarioDAO {
             }
         }
     }
+
     public static boolean usuarioExiste(Long cedula, String nombreUsuario) {
         String sql = "SELECT * FROM usuarios WHERE documento = ? OR nombre_usuario = ?";
         try (Connection conn = ConexionSql.getConexion();

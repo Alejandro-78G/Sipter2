@@ -7,11 +7,8 @@ public class Registrar {
     private List<String> usarios=new ArrayList<>();
     Scanner ni=new Scanner(System.in);
 
-    public Registrar(){
-        usarios.add("Ale89");
-        usarios.add("SeARs");
-        usarios.add("Mar54");
-    }
+   
+
     public void registrarUsuario(){
         System.out.println("Ingrese le nombre de usuario que desea registrar:");
         String nombreUsuario=ni.nextLine();
